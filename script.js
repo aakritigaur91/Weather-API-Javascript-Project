@@ -5,6 +5,13 @@ const weatherInfoSection = document.querySelector('.weather-info')
 const notFoundSection = document.querySelector('.not-found')
 const searchCitySection = document.querySelector('.search-city')
 
+const countryTxt = document.querySelector('.country-txt')
+const tempTxt = document.querySelector('.tempTxt')
+const conditionTxt = document.querySelector('.condition-txt')
+const humidityValueTxt = document.querySelector('.humidity-value-txt')
+const windValueTxt = document.querySelector('.wind-value-txt')
+const weatherSummaryImg = document.querySelector('.weather-summary-img')
+
 const apiKey = '2f5cbb783c260fb0a4e420737af7a0fe'
 
 searchBtn.addEventListener('click', () => {
@@ -36,8 +43,21 @@ async function updateWeatherInfo(city) {
         return
     }
     console.log(weatherData)
+
+    const {
+        name: country,
+        main: { temp, humidity },
+        weather: [{ id, main }],
+        wind: { speed }
+    } = weatherData
+
+
+    showDisplaySection(weatherInfoSection)
 }
 
 function showDisplaySection(section) {
-    
+    [weatherInfoSection, searchCitySection, notFoundSection]
+        .forEach(section => section.style.display = 'none')
+
+    section.style.display = 'flex'
 }
