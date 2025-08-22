@@ -6,11 +6,12 @@ const notFoundSection = document.querySelector('.not-found')
 const searchCitySection = document.querySelector('.search-city')
 
 const countryTxt = document.querySelector('.country-txt')
-const tempTxt = document.querySelector('.tempTxt')
+const tempTxt = document.querySelector('.temp-txt')
 const conditionTxt = document.querySelector('.condition-txt')
 const humidityValueTxt = document.querySelector('.humidity-value-txt')
 const windValueTxt = document.querySelector('.wind-value-txt')
 const weatherSummaryImg = document.querySelector('.weather-summary-img')
+const currentDateTxt = document.querySelector('.current-date-txt')
 
 const apiKey = '2f5cbb783c260fb0a4e420737af7a0fe'
 
@@ -50,6 +51,10 @@ async function updateWeatherInfo(city) {
         weather: [{ id, main }],
         wind: { speed }
     } = weatherData
+
+    countryTxt.textContent = country
+    tempTxt.textContent = Math.round(temp) + ' °C'
+    conditionTxt.textContent = 
 
 
     showDisplaySection(weatherInfoSection)
